@@ -7,9 +7,8 @@
 Satellite imagery · Land-cover classification · Environmental risk interpretation
 
 [![Checks](https://github.com/Archit-k20/Climate-Observatory/actions/workflows/checks.yml/badge.svg)](https://github.com/Archit-k20/Climate-Observatory/actions/workflows/checks.yml)
-![React](https://img.shields.io/badge/React-18-15231f?logo=react&logoColor=bed88d)
-![Python](https://img.shields.io/badge/Python-3.11-15231f?logo=python&logoColor=bed88d)
-![PyTorch](https://img.shields.io/badge/ML-PyTorch%20%2B%20XGBoost-15231f)
+
+**React 18** · **Python 3.11** · **PyTorch + XGBoost**
 
 [The interface](#the-interface) · [Quick start](#quick-start) · [Full-stack setup](#full-stack-setup) · [How it works](#how-it-works) · [Model verification](docs/model-artifacts.md)
 
