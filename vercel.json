@@ -1,0 +1,13 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "vite",
+  "buildCommand": "VITE_APP_MODE=demo npm --prefix frontend run build",
+  "outputDirectory": "frontend/dist",
+  "rewrites": [
+    {
+      "source": "/(upload|risk-map|simulator|reports|settings)/?",
+      "destination": "/index.html"
+    }
+  ],
+  "installCommand": "npm --prefix frontend ci"
+}
