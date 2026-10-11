@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { NavLink, Link } from "react-router-dom";
-import { ArrowUpRight, Bell, Menu, X } from "lucide-react";
+import { ArrowUpRight, Bell, Menu, Moon, Sun, X } from "lucide-react";
 import { useAppStore } from "@/store/useAppStore";
 import { isDemo } from "@/lib/config";
 const routes = [
@@ -16,8 +16,13 @@ export function TopNavBar() {
   const [bell, setBell] = useState(false);
   const menuButton = useRef<HTMLButtonElement>(null);
   const bellButton = useRef<HTMLButtonElement>(null);
-  const { notifications, markNotificationRead, clearNotifications } =
-    useAppStore();
+  const {
+    theme,
+    setTheme,
+    notifications,
+    markNotificationRead,
+    clearNotifications,
+  } = useAppStore();
   return (
     <header
       className="site-header"
@@ -39,6 +44,14 @@ export function TopNavBar() {
             <i />
             {isDemo ? "Demonstration" : "Connected workspace"}
           </span>
+          <button
+            className="icon-button"
+            aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
+            title={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
+            onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+          >
+            {theme === "light" ? <Moon size={18} /> : <Sun size={18} />}
+          </button>
           <button
             ref={bellButton}
             className="icon-button"

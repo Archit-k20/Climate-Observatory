@@ -2,6 +2,27 @@
 
 The inference runtime requires **both genuine binaries and verified training metadata**. No metadata has been invented for the archived checkpoints. A fresh checkout may contain Git LFS pointer files; these are not usable models.
 
+## Retrieve the original binaries
+
+The new repository retains the active artifacts from [Climate-Risk-System](https://github.com/Archit-k20/Climate-Risk-System), including their original Git LFS object hashes. From the repository root:
+
+```sh
+git lfs install --local
+git lfs pull --include="ml/models/*"
+git lfs fsck
+```
+
+| File | Bytes | Original SHA-256 / LFS object ID |
+| --- | ---: | --- |
+| `label_encoder.pkl` | 599 | `c8fd111cbc2c167fc3e8698b47b4d3c738ca0f20476a61b652347718b3e4dd7e` |
+| `resnet_eurosat.pth` | 44,806,667 | `ffb3d54b28dab17e433c9851d666de8e942f61c91e4e9cfdbbeb5e0c88e02296` |
+| `vit_eurosat.pth` | 343,306,663 | `01575a97497d5efffef5da4727f1990d7cef116883968ed338be190ef7a8d5d3` |
+| `xgboost_eurosat.pkl` | 81,304,173 | `d144eea0023ed7cd40337db00df36db9c5e42966bd08bc2ee546f822ea1633e7` |
+
+On macOS, compare downloaded files with `shasum -a 256 ml/models/*`; on Linux use `sha256sum`. Matching these hashes confirms transfer integrity only. Training metadata and real-checkpoint inference remain unverified.
+
+## Establish compatibility before enabling inference
+
 1. Install Git LFS from its official distribution, then run `git lfs install` and `git lfs pull --include="ml/models/*"` in this repository.
 2. Recover the original training configuration. Verify the label order, seven XGBoost features, input dimensions, normalization, ResNet18 architecture and ViT base configuration against each checkpoint. This repository's dataset loader is evidence of the intended transform, not proof of how the archived weights were trained.
 3. Create an ignored `ml/models/manifest.json` **only after compatibility is established**:

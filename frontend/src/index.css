@@ -1117,17 +1117,23 @@ input[type="range"] {
     padding: 0 20px;
   }
   .brand-row {
-    min-height: 80px;
+    min-height: 104px;
+    padding-bottom: 24px;
+    position: relative;
+    gap: 8px;
   }
   .brand {
     font-size: 21px;
   }
   .header-tools {
-    gap: 10px;
+    gap: 8px;
   }
   .mode-tag {
     font-size: 9px;
     letter-spacing: 0.3px;
+    position: absolute;
+    bottom: 12px;
+    left: 0;
   }
   .mobile-menu {
     display: grid;
